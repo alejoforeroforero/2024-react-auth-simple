@@ -1,0 +1,9 @@
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile.prod    
+    ports:
+      - 5173:80
+    volumes:
+      - ./src:/app/src
