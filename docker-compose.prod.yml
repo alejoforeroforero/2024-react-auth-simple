@@ -7,8 +7,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /etc/letsencrypt/live/cocinasitinerantes.com/fullchain.pem:/etc/nginx/ssl/cocinasitinerantes.com.crt:ro
-      - /etc/letsencrypt/live/cocinasitinerantes.com/privkey.pem:/etc/nginx/ssl/cocinasitinerantes.com.key:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
     environment:
       - NODE_ENV=production
     restart: unless-stopped
