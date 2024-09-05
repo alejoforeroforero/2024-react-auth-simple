@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     build: 
@@ -9,7 +7,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./ssl:/etc/nginx/ssl:ro
+      - /etc/letsencrypt/live/cocinasitinerantes.com/fullchain.pem:/etc/nginx/ssl/cocinasitinerantes.com.crt:ro
+      - /etc/letsencrypt/live/cocinasitinerantes.com/privkey.pem:/etc/nginx/ssl/cocinasitinerantes.com.key:ro
     environment:
       - NODE_ENV=production
     restart: unless-stopped
