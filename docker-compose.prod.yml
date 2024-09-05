@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   app:
     build: 
@@ -5,10 +7,9 @@ services:
       dockerfile: Dockerfile.prod    
     ports:
       - "80:80"
-      - "443:443"  # Añadimos el puerto 443 para HTTPS
+      - "443:443"
     volumes:
-      - ./ssl:/etc/nginx/ssl:ro  # Montamos los certificados SSL
-      # - ./src:/app/src  # Comentamos esta línea
+      - ./ssl:/etc/nginx/ssl:ro
     environment:
       - NODE_ENV=production
     restart: unless-stopped
