@@ -4,6 +4,11 @@ services:
       context: .
       dockerfile: Dockerfile.prod    
     ports:
-      - 5173:80
+      - "80:80"
+      - "443:443"  # Añadimos el puerto 443 para HTTPS
     volumes:
-      - ./src:/app/src
+      - ./ssl:/etc/nginx/ssl:ro  # Montamos los certificados SSL
+      # - ./src:/app/src  # Comentamos esta línea
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
